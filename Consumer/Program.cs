@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.ServiceBus;
+using Microsoft.Extensions.Logging;
 
 namespace Consumer
 {
@@ -15,6 +16,9 @@ namespace Consumer
                 StorageConnectionString = "UseDevelopmentStorage=true"
 #endif
             };
+
+            cfg.LoggerFactory = new LoggerFactory();
+            cfg.LoggerFactory.AddConsole(LogLevel.Debug);
 
             cfg.UseServiceBus(new ServiceBusConfiguration
             {
