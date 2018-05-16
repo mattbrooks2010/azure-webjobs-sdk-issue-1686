@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
 
 namespace Consumer
 {
@@ -6,9 +7,10 @@ namespace Consumer
     {
         public static void Run(
             [ServiceBusTrigger("testqueue")]
-            string message)
+            string message,
+            ILogger logger)
         {
-            // No-op
+            logger.LogInformation($"Received: {message}");
         }
     }
 }

@@ -14,6 +14,10 @@ namespace Consumer
 #if DEBUG
                 DashboardConnectionString = "UseDevelopmentStorage=true",
                 StorageConnectionString = "UseDevelopmentStorage=true"
+#else
+                // Uncomment this line to repro
+                // Azure/azure-webjobs-sdk issue #1686
+                DashboardConnectionString = null
 #endif
             };
 
